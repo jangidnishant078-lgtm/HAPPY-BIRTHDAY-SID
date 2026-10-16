@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sid 💜 | A Little Universe</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #090611;
+  --purple: #bd8cff;
+  --pink: #f1b7ff;
+  --white: #fff6ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, #38185866, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, #24104477, transparent 50%);
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.4); }
+}
+
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  padding: 70px 22px 45px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: pageIn 1s ease both;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: var(--purple);
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(42px, 10vw, 78px);
+  line-height: 1.05;
+  max-width: 850px;
+  text-shadow: 0 0 30px #bd8cff44;
+}
+
+h1 em {
+  color: var(--pink);
+}
+
+.description {
+  color: #d5c7e6;
+  font-size: 14px;
+  line-height: 2;
+  max-width: 450px;
+  margin: 25px auto 30px;
+  font-weight: 300;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border: 1px solid #d3a6ff99;
+  background: linear-gradient(135deg, #9d5bcb, #6335a0);
+  color: white;
+  border-radius: 50px;
+  padding: 14px 25px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  box-shadow: 0 0 28px #a35de633;
+  transition: .3s;
+  margin: 4px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #c18aff66;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+button:disabled {
+  opacity: .7;
+  cursor: default;
+}
+
+.back {
+  margin-top: 12px;
+  border-color: #ffffff22;
+  background: #ffffff08;
+  box-shadow: none;
+}
+
+.chapter {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  color: #9c85b7;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.symbol {
+  font-size: 75px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 25px #c18aff77);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-16px) rotate(3deg); }
+}
+
+.planet {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 35px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 30% 25%, #f4d8ff, #aa66db 35%, #46216c 75%);
+  box-shadow: 0 0 50px #b56aff55, inset -15px -12px 25px #12091e;
+  animation: float 5s infinite;
+}
+
+.planet::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 50px;
+  border: 2px solid #e5baffbb;
+  border-radius: 50%;
+  top: 40px;
+  left: -32px;
+  transform: rotate(-20deg);
+}
+
+.word-cloud {
+  max-width: 550px;
+  min-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin: 25px auto;
+}
+
+.word-cloud span {
+  color: var(--pink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 5vw, 34px);
+  animation: wordFloat 3s infinite alternate;
+}
+
+.word-cloud span:nth-child(even) {
+  color: #b89cff;
+  animation-delay: .8s;
+}
+
+@keyframes wordFloat {
+  from { transform: translateY(5px) rotate(-4deg); opacity: .55; }
+  to { transform: translateY(-8px) rotate(4deg); opacity: 1; }
+}
+
+.letter-box {
+  max-width: 570px;
+  width: 100%;
+  padding: 27px 22px;
+  border: 1px solid #c99bff44;
+  border-radius: 20px;
+  background: #ffffff07;
+  backdrop-filter: blur(12px);
+  margin: 25px auto;
+  text-align: left;
+  line-height: 2;
+  color: #eee1ff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.progress {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #9560ff, #ffc4fb);
+  transition: width .5s;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  animation: fall 3.5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(900deg);
+    opacity: 0;
+  }
+}
+
+.footer {
+  color: #8d789f;
+  font-size: 10px;
+  margin-top: 35px;
+  letter-spacing: 2px;
+}
+
+.small {
+  font-size: 11px;
+  color: #a998bb;
+  margin-top: 20px;
+}
+
+@media(max-width: 480px) {
+  .page {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+
+  .letter-box {
+    padding: 20px 17px;
+    font-size: 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div class="progress" id="progress"></div>
+<div id="confetti"></div>
+
+<section class="page active" id="p1">
+  <div class="chapter">CHAPTER 01 / THE INVITATION</div>
+  <div class="symbol">✉️</div>
+  <p class="eyebrow">A little something awaits</p>
+  <h1>Some doors open<br>only <em>once.</em></h1>
+  <p class="description">
+    Hey, Sid.<br>
+    Somewhere between an ordinary day and a thousand stars,
+    something was made just for you.
+  </p>
+  <button onclick="go(2)">ENTER THE UNKNOWN ↗</button>
+  <p class="small">A tiny universe by Nishant 💜</p>
+</section>
+
+<section class="page" id="p2">
+  <div class="chapter">CHAPTER 02 / THE UNIVERSE</div>
+  <div class="planet"></div>
+  <p class="eyebrow">Somewhere in infinity</p>
+  <h1>Even the stars<br>have <em>stories.</em></h1>
+  <p class="description">
+    Millions of galaxies. Billions of stars.<br>
+    And somehow, today, this little corner of the universe
+    is celebrating you.
+  </p>
+  <button onclick="go(3)">FOLLOW THE STARDUST ✨</button>
+  <button class="back" onclick="go(1)">← GO BACK</button>
+</section>
+
+<section class="page" id="p3">
+  <div class="chapter">CHAPTER 03 / STARDUST</div>
+  <p class="eyebrow">Fragments of a little thought</p>
+  <h1>Made of <em>magic.</em></h1>
+  <div class="word-cloud">
+    <span>laughter</span>
+    <span>✨ wonder</span>
+    <span>memories</span>
+    <span>moonlight</span>
+    <span>chaos</span>
+    <span>friendship</span>
+    <span>stardust</span>
+    <span>possibilities</span>
+  </div>
+  <p class="description">
+    The little things often become the stories we remember.
+    Here's to more unexpected laughs, good days,
+    and memories still waiting to happen.
+  </p>
+  <button onclick="go(4)">THERE'S SOMETHING ELSE →</button>
+  <button class="back" onclick="go(2)">← GO BACK</button>
+</section>
+
+<section class="page" id="p4">
+  <div class="chapter">CHAPTER 04 / A SECRET MESSAGE</div>
+  <div class="symbol">💌</div>
+  <p class="eyebrow">A message from the other side</p>
+  <h1>Read between<br>the <em>stars.</em></h1>
+  <div class="letter-box" id="secretText"></div>
+  <button id="secretBtn" onclick="typeSecret()">UNLOCK THE MESSAGE ✨</button>
+  <button class="hidden" id="secretNext" onclick="go(5)">KEEP GOING →</button>
+  <button class="back" onclick="go(3)">← GO BACK</button>
+</section>
+
+<section class="page" id="p5">
+  <div class="chapter">CHAPTER 05 / LITTLE THINGS</div>
+  <div class="symbol">🌷</div>
+  <p class="eyebrow">A small collection of wishes</p>
+  <h1>For all the things<br><em>yet to come.</em></h1>
+  <div class="word-cloud">
+    <span>more adventures</span>
+    <span>better days</span>
+    <span>big dreams</span>
+    <span>happy accidents</span>
+    <span>new beginnings</span>
+    <span>endless laughter</span>
+  </div>
+  <p class="description">
+    May life surprise you in beautiful ways.
+    May you keep finding reasons to smile,
+    and may the next chapter be one worth remembering.
+  </p>
+  <button onclick="go(6)">ONE LAST DOOR 🔐</button>
+  <button class="back" onclick="go(4)">← GO BACK</button>
+</section>
+
+<section class="page" id="p6">
+  <div class="chapter">CHAPTER 06 / THE REVEAL</div>
+  <div class="symbol">🌌</div>
+  <p class="eyebrow">The universe has been keeping a secret</p>
+  <h1>Three little words...<br><em>one big day.</em></h1>
+  <p class="description">
+    All these stars, all these chapters,
+    all this mysterious nonsense...
+    were leading to one very important thing.
+  </p>
+  <button onclick="go(7)">OPEN YOUR SURPRISE 🎁</button>
+  <button class="back" onclick="go(5)">← GO BACK</button>
+</section>
+
+<section class="page" id="p7">
+  <div class="chapter">THE MAIN EVENT / FOR SID 💜</div>
+  <p class="eyebrow">October 17 · your special day</p>
+
+  <div class="word-cloud" id="chaos">
+    <span>HAPPY</span>
+    <span>birthday</span>
+    <span>SID!!</span>
+    <span>🎂</span>
+    <span>✨ SURPRISE ✨</span>
+    <span>💜</span>
+    <span>another chapter</span>
+    <span>YOUR DAY</span>
+  </div>
+
+  <h1>HAPPY BIRTHDAY<br><em>SID! 🎂</em></h1>
+
+  <p class="description">
+    The stars have aligned.<br>
+    The secret is out.<br>
+    It's finally your day.
+  </p>
+
+  <button id="birthdayBtn" onclick="revealLetter()">
+    HAPPY BIRTHDAY SID 💜
+  </button>
+
+  <div class="letter-box hidden" id="birthdayLetter"></div>
+
+  <button class="hidden" id="finalBtn" onclick="go(8)">
+    ONE LAST THING FOR YOU →
+  </button>
+  <button class="back" onclick="go(6)">← RETURN TO THE PORTAL</button>
+</section>
+
+<section class="page" id="p8">
+  <div class="chapter">CHAPTER 08 / UNTIL THE NEXT ADVENTURE</div>
+  <div class="symbol">💜</div>
+  <p class="eyebrow">A final little wish</p>
+  <h1>Your story is<br><em>just beginning.</em></h1>
+  <p class="description">
+    Happy Birthday, Sid.<br><br>
+    Keep being yourself, keep chasing the things
+    that make you happy, and never forget how many
+    wonderful things the future might hold.
+    Here's to another year of growth, laughter,
+    unexpected adventures, and unforgettable memories.
+    <br><br>
+    No matter where life takes us, I hope this little
+    corner of the internet makes you smile.
+  </p>
+  <div class="letter-box" style="text-align:center">
+    Made with 💜, a little chaos, and lots of thought.<br><br>
+    <span style="color:#d5a8ff">— Nishant</span>
+  </div>
+  <button onclick="celebrate()">ONE MORE CELEBRATION 🎉</button>
+  <button class="back" onclick="go(1)">↺ REVISIT THE UNIVERSE</button>
+  <p class="footer">END OF THIS CHAPTER · NOT THE STORY</p>
+</section>
+
+<script>
+const stars = document.getElementById('stars');
+
+for (let i = 0; i < 110; i++) {
+  const s = document.createElement('span');
+  s.className = 'star';
+
+  const size = Math.random() * 2.5 + 1;
+  s.style.width = size + 'px';
+  s.style.height = size + 'px';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.animationDelay = Math.random() * 3 + 's';
+  s.style.animationDuration = (1.5 + Math.random() * 3) + 's';
+
+  stars.appendChild(s);
+}
+
+function go(n) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+  });
+
+  const next = document.getElementById('p' + n);
+
+  void next.offsetWidth;
+  next.classList.add('active');
+
+  document.getElementById('progress').style.width =
+    ((n - 1) / 7 * 100) + '%';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (n === 7) celebrate();
+}
+
+const secretMessage =
+`Sid,
+
+Not every surprise needs a reason.
+Sometimes it's enough to celebrate a person,
+create something a little different,
+and hope it makes them smile.
+
+This is one tiny reminder that today is yours.
+Enjoy every moment. ✨`;
+
+let secretStarted = false;
+let letterStarted = false;
+
+function typeText(element, text, speed, callback) {
+  element.textContent = '';
+  let i = 0;
+
+  const timer = setInterval(() => {
+    element.textContent += text.charAt(i);
+    i++;
+
+    if (i >= text.length) {
+      clearInterval(timer);
+      if (callback) callback();
+    }
+  }, speed);
+}
+
+function typeSecret() {
+  if (secretStarted) return;
+  secretStarted = true;
+
+  document.getElementById('secretBtn').classList.add('hidden');
+
+  typeText(
+    document.getElementById('secretText'),
+    secretMessage,
+    35,
+    () => {
+      document.getElementById('secretNext')
+        .classList.remove('hidden');
+    }
+  );
+}
+
+const birthdayMessage =
+`Hey Sid! 💜
+
+HAPPY BIRTHDAY!!
+
+So... you just went through an entire mysterious universe
+to get here. 😭✨
+
+I could've simply sent a birthday message,
+but where's the fun in that?
+
+I wanted to make you something different —
+a tiny digital adventure with stars, secrets,
+a little chaos, and a whole lot of birthday energy.
+
+I hope this new year of your life brings you
+happiness, confidence, exciting opportunities,
+great memories, and countless reasons to smile.
+
+Keep being your own person.
+Keep dreaming big.
+Keep making ordinary days a little less ordinary.
+
+Thank you for being a part of my story, Sid.
+I hope this little surprise becomes a memory
+that makes you smile whenever you think of it.
+
+Have the BEST birthday ever!! 🎂✨
+
+Stay awesome, and enjoy YOUR day.
+
+— Nishant 💜`;
+
+function revealLetter() {
+  if (letterStarted) return;
+  letterStarted = true;
+
+  const button = document.getElementById('birthdayBtn');
+  button.disabled = true;
+  button.textContent = 'A LITTLE MESSAGE FOR YOU 💌';
+
+  const letter = document.getElementById('birthdayLetter');
+  letter.classList.remove('hidden');
+
+  celebrate();
+
+  typeText(letter, birthdayMessage, 32, () => {
+    document.getElementById('finalBtn')
+      .classList.remove('hidden');
+
+    button.textContent = 'MESSAGE UNLOCKED 💜';
+  });
+}
+
+function celebrate() {
+  const container = document.getElementById('confetti');
+  const emojis = ['💜', '✨', '🎉', '💖', '🌟', '🎂', '🪻'];
+
+  for (let i = 0; i < 65; i++) {
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+
+    piece.textContent =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.fontSize = (12 + Math.random() * 17) + 'px';
+    piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+    piece.style.animationDelay = Math.random() * 1.5 + 's';
+
+    container.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 6500);
+  }
+}
+</script>
+
+</body>
+</html>
